@@ -126,7 +126,7 @@ int main (int argc, const char * argv[])
 		node a = e.source();
 		node b = e.target();
 		
-		cout << "[" << b.id() << "," << a.id() << "]";
+		cout << "[" << b.id() << "," << a.id() << "," << G.get_edge_weight(e) << "]";
 		
 		it++;
 		

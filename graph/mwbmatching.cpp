@@ -45,13 +45,16 @@ void mwbmatching::set_vars(const edge_map<int>& edge_weight)
 
 int mwbmatching::check (graph& G) 
 {
-	if (!set_vars_executed)
+  if (!set_vars_executed)
     {
-		return(GTL_ERROR);
+      return(GTL_ERROR);
     }
-	if ((G.number_of_nodes() <= 1) || (!G.is_connected()) || (!G.is_directed()))
+  if ((G.number_of_nodes() <= 1) /*|| (!G.is_connected())*/ || (!G.is_directed()))
     {
-		return(GTL_ERROR);
+      if(!G.is_connected()) {
+        fprintf(stderr, "\nnot connected\n");
+      }
+      return(GTL_ERROR);
     }
     return GTL_OK;
 }
@@ -279,7 +282,7 @@ int mwbmatching::augment(graph& G, node a)
 	// Clean up
 	fh_free (pq);
 
-	
+        return 0;
 
 }
 
